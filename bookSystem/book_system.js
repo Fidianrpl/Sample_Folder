@@ -27,7 +27,8 @@ function showbooks() {
         <p><strong>Nombre del autor:</strong> ${book.authorName}</p>
         <p><strong>Descripción del libro:</strong> ${book.bookDescription}</p>
         <p><strong>Número de páginas:</strong> ${book.pagesNumber} página(s)</p>
-        <button onclick="editbook(${index})">Editar</button>`
+        <button onclick="editbook(${index})">Editar</button>
+        <button onclick="deletebook(${index})">Borrar</button>`
     );
     document.getElementById('books').innerHTML = booksDiv.join('');
 };
@@ -40,7 +41,24 @@ function editbook(index) {
     document.getElementById('pagesNumber').value = book.pagesNumber;
     books.splice(index, 1); // Eliminar entrada antigua
     showbooks(); // Actualizar lista
-  };
+};
+
+function deletebook(index) {
+    const book = books[index];
+    document.getElementById('bookName').value = book.name;
+    document.getElementById('authorName').value = book.authorName;
+    document.getElementById('bookDescription').value = book.bookDescription;
+    document.getElementById('pagesNumber').value = book.pagesNumber;
+    books.pop(index, 1); // Eliminar entrada antigua
+    clearInputs();
+    showbooks(); // Actualizar lista
+  }; // Mi método
+
+ // function deletebook(index) {
+    // Remove the book entry at the given index
+    //books.splice(index, 1);
+    //showbooks(); // Refresh the book list after deletion
+//} Método del curso
 
   function clearInputs() {
     document.getElementById('bookName').value = '';

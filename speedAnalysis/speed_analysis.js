@@ -31,6 +31,8 @@ function endTest() {
     var typedWords = userTypedText.split(/\s+/).filter(function (word) {
         return word !== "";
     }).length;
+
+    var totalTypes = userTypedText.length;
     var wpm = 0; // Valor por defecto
     if (timeElapsed !== 0 && !isNaN(typedWords)) {
         wpm = Math.round((typedWords / timeElapsed) * 60);
@@ -39,6 +41,7 @@ function endTest() {
     // Mostrar los resultados
     var outputDiv = document.getElementById("output");
     outputDiv.innerHTML = "<h2>Resultados de la Prueba de Escritura:</h2>" +
+        "<p>Total de Carácteres: " + totalTypes + "</p>" +
         "<p>Palabras Escritas: " + typedWords + "</p>" +
         "<p>Tiempo Transcurrido: " + timeElapsed.toFixed(2) + " segundos</p>" +
         "<p>Palabras Por Minuto (PPM): " + wpm + "</p>";
